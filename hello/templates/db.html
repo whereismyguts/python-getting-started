@@ -1,21 +1,16 @@
-{% extends "base.html" %}
-{% load staticfiles %}
-
-{% block content %}
-  <div class="container">
-
-
 <h2>Page View Report</h2>
 
+{{image}}
+<p>{{Name}}</p>
+<p>{{Description}}</p>
+<hr>
 
-<ul>
 
-{% for greeting in greetings %}
-    <li>{{ greeting.when }}</li>
+{% for image in Images %}
+    <img alt="sample" src="data:image/png;base64,{{image}}" }>
+    <!-- <p>{{ image }}</p> -->
 {% endfor %}
 
-</ul>
 
-</div>
 
-{% endblock %}
+
