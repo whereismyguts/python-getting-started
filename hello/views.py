@@ -36,6 +36,12 @@ def db(request):
 
     thingies = db['Thingies']
     first = thingies.find_one()
+    import json
+    import base64
+    for image in first["Images"]
+        dataStr = json.dumps(data)
+        base64EncodedStr = base64.b64encode(dataStr)
+        first["Images"].append(base64EncodedStr)
     # data = {
     #         'greetings': [
     #             {"test": first['Description']}, 
