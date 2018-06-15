@@ -1,20 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Greeting
+import pymongo
 
+uri = "mongodb://user:admin123@ds115352.mlab.com:15352/sorokin_sad"
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'index.html')
+    data = { 'greetings': [
+                {"test": "hold"}, 
+                {"test": "my beer"}
+                ]
+            }
+    return render(request, 'index.html', data)
 
 
 def db(request):
 
-    greeting = Greeting()
-    greeting.save()
+    client = pymongo.MongoClient(uri)
+    db = client.get_default_database()
 
-    greetings = Greeting.objects.all()
+    thingies = db['Thingies']
+    first = thingies.find_one()
+    data = {
+            'greetings': [
+                {"test": first.Description}, 
+                {"test": first.Name}
+            ]
+        }
+    return render(request, 'index.html', data )
 
-    return render(request, 'db.html', {'greetings': greetings})
 
