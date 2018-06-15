@@ -24,8 +24,8 @@ def db(request):
     first = thingies.find_one()
     data = {
             'greetings': [
-                {"test": first.Description}, 
-                {"test": first.Name}
+                {"test": first['Description']}, 
+                {"test": first['Name']}
             ]
         }
     return render(request, 'index.html', data )
