@@ -36,12 +36,12 @@ def db(request):
 
     thingies = db['Thingies']
     first = thingies.find_one()
-    data = {
-            'greetings': [
-                {"test": first['Description']}, 
-                {"test": first['Name']}
-            ]
-        }
-    return render(request, 'index.html', data )
+    # data = {
+    #         'greetings': [
+    #             {"test": first['Description']}, 
+    #             {"test": first['Name']}
+    #         ]
+    #     }
+    return render(request, 'index.html', first )
 
 
