@@ -39,11 +39,12 @@ def db(request):
     import json
     import base64
     if "Images" in first:
-        #images = []
+        images = []
         for image in first["Images"]:
             img_base64 = base64.b64encode(image).decode('ascii')
-            image = img_base64
-        #first["Images"]+=images
+            images.append(img_base64)
+            
+        first["Images"]=images
 
     if "Image" in first:
         img_base64 = base64.b64encode(first["Image"]).decode('ascii')
