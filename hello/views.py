@@ -38,7 +38,7 @@ def db(request):
     first = thingies.find_one()
     import json
     import base64
-    for image in first["Images"]
+    for image in first["Images"]:
         dataStr = json.dumps(data)
         base64EncodedStr = base64.b64encode(dataStr)
         first["Images"].append(base64EncodedStr)
